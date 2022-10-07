@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courier</title>
+  <link rel="stylesheet" href="../../public/css/reset.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+
+<body>
+  <header class="display-flex justify-space-between align-center p-2">
+    <h1>
+      Courier Home
+    </h1>
+    {{#if logged_in}}
+    <nav>
+        <input type="text" placeholder="Search for your document by title...">
+        <button class="btn" id="search">Search</button>
+         <button class="btn" id="upload">Upload New Document</button>
+        <br>
+        <br>
+        <button class="btn" id="logout">Logout</button>
+    </nav>
+    {{/if}}
+
+    {{#if logged_out}}
+    <input type="text" id="username" placeholder="Username">
+    <input type="text" id="password" placeholder="Password">
+    <button class="btn" id="login">Login</button>
+    {{/if}}
+  </header>
+  <main class="container container-fluid mt-5">
+    {{{ body }}}
+  </main>
+  <footer>
+      
+  </footer>
+
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+   {{#if logged_out}}
+  <script src="/js/login.js"></script>
+  {{/if}}
+</body>
+
+</html>
