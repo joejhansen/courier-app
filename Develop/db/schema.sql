@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS courier_db;
+CREATE DATABASE courier_db;
