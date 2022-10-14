@@ -1,17 +1,21 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model {}
+class Group extends Model {}
 
-Comment.init(
+Group.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
             allowNull: false,
+            primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
+        group_name: {
+            type:DataTypes.STRING,
+            allowNull: false
+        },
+        group_admin: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -19,27 +23,11 @@ Comment.init(
                 key: 'id'
             }
         },
-        post_id: {
-            type: DatatTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'post',
-                key: 'id'
-            }
-        },
-        group_id: {
+        group_members: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
-                model: 'group',
+                model: 'user',
                 key: 'id'
-            }
-        },
-        comment_text: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                len: [1]
             }
         }
     },
@@ -48,8 +36,8 @@ Comment.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment'
+        modelName: 'group',
     }
 );
 
-module.exports = Comment;
+module.exports = Group;
