@@ -26,6 +26,13 @@ password: {
     validate: {
         len: [8],
     },
+    group_id: {
+    type: DataTypes.INTEGER,
+    references: {
+        model: 'group',
+        key: 'id'
+    }
+}
 },
 },
 {
