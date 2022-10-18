@@ -1,4 +1,3 @@
-
 const Comment = require('./Comment');
 const Group = require('./Group');
 const Post = require('./Post');
