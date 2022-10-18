@@ -47,11 +47,35 @@
 
             <div class="column m-1">
                 <div class="box">
-                    <p class="title">Groups you are in</p>
+                    <p class="title">Your Groups</p>
+                <button class="js-modal-trigger button is-primary" data-target="modal-newGroup" id="newGroupBttn"> Create New Group</button>    
                 </div>
+                
             </div>
 
         </div>
     </div>
 
 </div>
+
+
+{{!-- modal --}}
+<div id="modal-newGroup" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Create New Group</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save</button>
+            {{!-- <button class="button">Cancel</button> --}}
+        </footer>
+    </div>
+</div>
+
+
+<script src="/js/groupsHandlers/modal.js"></script>
