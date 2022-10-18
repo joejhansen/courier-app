@@ -8,14 +8,14 @@ const signupHandler = async (event) => {
         alert('Please provide a valid username and password');
     } else {
         try {
-            const response = await fetch('/users/signup', {
+            const response = await fetch('/api/users', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },
             });
 
             if (response.ok) {
-                document.location.replace('/');
+                document.location.replace('');
             } else {
                 alert('Failed to create user');
             }

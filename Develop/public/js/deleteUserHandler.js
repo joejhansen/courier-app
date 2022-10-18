@@ -2,7 +2,7 @@ const deleteUserHandler = async (event) => {
     event.preventDefault();
 
     try {
-        const response = await fetch('/users', {
+        const response = await fetch('/api/users', {
             method: 'DELETE',
         });
 
