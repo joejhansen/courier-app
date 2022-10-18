@@ -2,8 +2,10 @@ const Comment = require('./Comment');
 const Group = require('./Group');
 const Post = require('./Post');
 const User = require('./User');
+const UserGroups = require('./UserGroups')
 
 User.belongsToMany(Group, {
+    through: UserGroups,
     foreignKey: 'user_id'
 });
 
@@ -11,10 +13,11 @@ Group.belongsTo(User, {
     foreignKey: 'group_admin'
 });
 
-Group.belongsToMany(User, {
-    // foreignKey: 'group_members'
-    foreignKey: 'group_id'
-})
+// Group.belongsToMany(User, {
+//     // foreignKey: 'group_members'
+//     through: UserGroups
+//     foreignKey: 'group_id'
+// })
 
 Post.belongsTo(User, {
     foreignKey: 'user_id'
@@ -64,5 +67,6 @@ module.exports = {
     Group, 
     Post,
     Comment,
-    User
+    User,
+    UserGroups
 };
