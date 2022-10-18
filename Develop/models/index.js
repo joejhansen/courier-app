@@ -3,17 +3,18 @@ const Group = require('./Group');
 const Post = require('./Post');
 const User = require('./User');
 
-// User.belongsToMany(Group, {
-//     foreignKey: 'group_id'
-// });
+User.belongsToMany(Group, {
+    foreignKey: 'user_id'
+});
 
 Group.belongsTo(User, {
     foreignKey: 'group_admin'
 });
 
-// Group.belongsToMany(User, {
-//     foreignKey: 'group_members'
-// })
+Group.belongsToMany(User, {
+    // foreignKey: 'group_members'
+    foreignKey: 'group_id'
+})
 
 Post.belongsTo(User, {
     foreignKey: 'user_id'
@@ -27,9 +28,9 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Comment.belongsTo(Group, {
-    foreignKey: 'group_id'
-});
+// Comment.belongsTo(Group, {
+//     foreignKey: 'group_id'
+// });
 
 Comment.belongsTo(Post, {
     foreignKey: 'post_id'
