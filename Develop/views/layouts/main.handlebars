@@ -4,46 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Courier</title>
-  <link rel="stylesheet" href="../../public/css/reset.css">
-  <link rel="stylesheet" href="../../public/css/style.css">
+  <title>Courier App</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Courier Home
-    </h1>
-    {{#if logged_in}}
-    <nav>
-        <input type="text" placeholder="Search for your document by title...">
-        <button class="btn" id="search">Search</button>
-         <button class="btn" id="upload">Upload New Document</button>
-        <br>
-        <br>
-        <button class="btn" id="logout">Logout</button>
-    </nav>
-    {{/if}}
-
-    {{#if logged_out}}
-    <input type="text" id="username" placeholder="Username">
-    <input type="text" id="password" placeholder="Password">
-    <button class="btn" id="login">Login</button>
-    {{/if}}
-  </header>
-  <main class="container container-fluid mt-5">
-    {{{ body }}}
-  </main>
-  <footer>
+  <div>
+    <header>
+      <h1>
+        <a href="/">Writers Blog</a>
+      </h1>
+      <nav>
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
       
-  </footer>
+    </footer>
+  </div>
 
+  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
-   {{#if logged_out}}
-  <script src="/js/login.js"></script>
-  {{/if}}
+
 </body>
 
 </html>
