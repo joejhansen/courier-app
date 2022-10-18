@@ -1,12 +1,13 @@
 const deleteCommentHandler = async (event) => {
     event.preventDefault();
 
-    const id = document.querySelector('#commentDeleteBtn').attributes('id')
+    const user_id = document.querySelector('#commentDeleteBtn').attributes('data-user-id') 
+    const id = document.querySelector('#commentDeleteBtn').attributes('data-comment-id')
 
     try {
         const response = await fetch('/comments', {
             method: 'DELETE',
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, user_id }),
             headers: { 'Content-Type': 'application/json' },
         })
 
