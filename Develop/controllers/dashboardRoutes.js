@@ -20,6 +20,20 @@ router.get('/', withAuth, async (req,res) => {
 });
 
 
+router.get('/newpost', withAuth, (req, res) => { 
+    try {
+        if(req.session.logged_in) {
+            res.render('newPost',{
+                logged_in: req.session.logged_in
+            });
+            return;
+        }
+        res.redirect('/dashboard');
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    
+});
 
 
 module.exports = router;
