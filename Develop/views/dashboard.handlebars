@@ -7,16 +7,13 @@
 
         <div class="columns is-mobile">
 
-            <div class="column m-1">
+            {{!-- <div class="column m-1">
 
                 <div class="box">
                     <p class="title">Add a story or file</p>
                 </div>
 
-                <div class="box">
-                    <p class="title">Create new group</p>
-                </div>
-            </div>
+            </div> --}}
 
             <div class="column is-half m-1">
                 <div class="box">
@@ -48,13 +45,38 @@
             <div class="column m-1">
                 <div class="box">
                     <p class="title">Your Groups</p>
-                <button class="js-modal-trigger button is-primary" data-target="modal-newGroup" id="newGroupBttn"> Create New Group</button>    
+                    <article class="panel is-primary">
+
+                        {{#if groups.length}}
+                        {{#each groups as |group|}}
+
+                        <a class="panel-block">
+                            <span class="panel-icon">
+                                <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            </span>
+                            <p><a href="/group/{{id}}">{{group_name}}</a></p>
+                        </a>
+                        {{/each}}
+                        {{else}}
+                        <a class="panel-block">
+                            <span class="panel-icon">
+                                <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            </span>
+                            <p>Template Group Name</p>
+                        </a>
+                        <p>You do not have any groups yet!</p>
                 </div>
-                
+
+                {{/if}}
+                </article>
+                <button class="js-modal-trigger button is-primary" data-target="modal-newGroup" id="newGroupBttn">
+                    Create New Group</button>
             </div>
 
         </div>
+
     </div>
+</div>
 
 </div>
 
@@ -67,15 +89,17 @@
             <p class="modal-card-title">Create New Group</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body">
-            <!-- Content ... -->
-        </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success">Save</button>
-            {{!-- <button class="button">Cancel</button> --}}
-        </footer>
+        <form id="groupForm">
+            <section class="modal-card-body">
+                <input id="groupName" class="input is-primary" type="text" placeholder="Enter Group Name">
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-success">Save</button>
+            </footer>
+        </form>
     </div>
 </div>
 
 
 <script src="/js/groupsHandlers/modal.js"></script>
+<script src="/js/groupsHandlers/createGroupHandler.js"></script>

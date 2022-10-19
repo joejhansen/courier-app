@@ -1,30 +1,21 @@
 const createGroupHandler = async (event) => {
     event.preventDefulat();
 
-    const name = document.querySelector('#groupName').value.trim()
+    const group_name = document.querySelector('#groupName').value.trim()
 
-    if (name) {
-
-        try {
-            const response = await fetch('/groups', {
+    if (group_name) {
+            const response = await fetch(`/api/group`, {
                 method: 'POST',
-                body: JSON.stringify({ name }),
+                body: JSON.stringify({ group_name }),
                 headers: { 'Content-Type': 'application/json' },
             });
 
             if (response.ok) {
-                console.log('Group created')
-            } else {
-                alert('Failed to create group. Please try again later.');
+                document.location.replace('/dashboard');
+              } else {
+                alert('Failed to create a post');
+              }
             }
-
-        } catch (err) {
-            alert('Something went wrong. Please try again later')
-        }
-
-    } else {
-        alert('Please provide a name for the group')
-    }
-}
+          };
 
 document.querySelector('#groupForm').addEventListener('submit', createGroupHandler)

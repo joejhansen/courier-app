@@ -1,1 +1,10 @@
-<p id="login-box" class="has-text-centered">Stuff coming soon!</p>
+{{#each groups as |group|}}
+
+{{> groupInfo group }}
+
+
+{{else}}
+
+   <h4 class="text-center">There are no groups yet!</h4>
+
+{{/each}}
