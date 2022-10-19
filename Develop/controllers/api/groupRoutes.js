@@ -4,9 +4,8 @@ const { Group } = require('../../models');
 router.post('/', async (req, res) => {
     try {
       const newGroup = await Group.create({
-        // ...req.body,
         group_name: req.body.group_name,
-        user_id: req.session.user_id,
+        group_admin: req.session.user_id,
       });
       if (!req.body.group_name) {
         return res.status(401).json({ msg: "No group!" })
