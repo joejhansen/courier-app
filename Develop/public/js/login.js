@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       alert('Failed to log in.');
     }
   } else {
-    alert("Incorrect email or password, please try again")
+    alert("Incorrect username or password, please try again")
   }
 };
 

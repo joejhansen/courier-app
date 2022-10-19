@@ -18,7 +18,7 @@
     <nav class="navbar " role="navigation" aria-label="main navigation">
         <div class="navbar-brand ">
             <a class="navbar-item" href="/">
-                <img src="/imgs/paper-airplane.png" height="29">
+                <img src="/imgs/paper-airplane.png">
                 <h1 class="is-size-4 has-text-weight-semibold">Courier</h1>
             </a>
         </div>
@@ -26,20 +26,22 @@
 
         <div class="navbar-end">
             <div class="navbar-item">
+
+                {{#if logged_in}}
                 <div class="buttons">
-
-                    {{#if logged_in}}
-                    <a href="/profile">Profile</a>
-                    <a class="button is-danger is-outlined ">Logout<i
+                    <a href="/dashboard" class="px-4">My Dashboard</a>
+                    <a id="logout" class="button is-danger is-outlined px-3">Logout<i
                             class="fa-solid fa-right-from-bracket pl-2"></i></a>
-                    {{else}}
-                    <a class="button is-success is-outlined" href="/login">Log in<i
-                            class="fa-solid fa-right-to-bracket pl-2"></i></a>
-                    <a class="button is-danger is-outlined" href="/signup"><i
-                            class="fa-solid fa-user-plus pr-2"></i>Sign up</a>
-                    {{/if}}
 
+                    {{else}}
+                    <div class="">
+                        <a class="button is-success is-outlined" href="/login">Log in<i
+                                class="fa-solid fa-right-to-bracket pl-2"></i></a>
+                        <a class="button is-danger is-outlined" href="/signup"><i
+                                class="fa-solid fa-user-plus pr-2"></i>Sign up</a>
+                    </div>
                 </div>
+                {{/if}}
             </div>
         </div>
         </div>
