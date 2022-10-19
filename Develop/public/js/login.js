@@ -12,12 +12,12 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in.');
+      alert('Incorrect username or password');
     }
   } else {
-    alert("Incorrect username or password, please try again")
+    alert('Incorrect username or password')
   }
 };
 
