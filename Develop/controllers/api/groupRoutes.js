@@ -2,40 +2,47 @@ const router = require('express').Router();
 const { Group, Post, User } = require('../../models');
 
 router.post('/', async (req, res) => {
-    try {
-      const newGroup = await Group.create({
-        group_name: req.body.group_name,
-        group_admin: req.session.user_id,
+
+  const body = req.body;
+
+  try {
+    const newGroup = await Group.create({ ...body, user_id: req.session.user_id, }, {
+      include: [User]
+    })
+    if (!newGroup) {
+      res.status(500).json({ message: "error" })
+    } else {
+      const group = newGroup.get({ plain: true })
+      res.status(200).render('group', {
+        group,
       });
-      if (!req.body.group_name) {
-        return res.status(401).json({ msg: "No group!" })
-      }
-      res.status(200).json(newGroup);
-    } catch (err) {
-      res.status(400).json(err);
     }
-  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.put('/:id', async (req, res) => {
-    try {
-      const [affectedRows] = await Group.update(req.body, {
+  try {
+    const [affectedRows] = await Group.update(req.body.group_members, {
 
-        where: {
-          id: req.params.id,
-        },
-      });
-  
+      where: {
+        id: req.params.id,
+      },
+    });
 
-      if (affectedRows > 0) {
-        res.status(200).end();
-      } else {
-        res.status(404).end();
-      }
 
-    } catch (err) {
-      res.status(500).json(err);
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-  });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.delete('/:id', async (req, res) => {
   try {
