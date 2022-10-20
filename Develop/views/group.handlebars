@@ -1,32 +1,90 @@
-<p>hello</p>
+<div class="columns m-5">
 
-<div class="columns">
+
     <div id="groupPosts" class="column is-two-thirds">
 
+        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
+
+            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
+            <div>
+                <small>By [username] | Date</small>
+            </div>
+
+        </div>
+
+        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
+
+            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
+            <div>
+                <small>By [username] | Date</small>
+            </div>
+
+        </div>
+
+        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
+
+            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
+            <div>
+                <small>By [username] | Date</small>
+            </div>
+
+        </div>
+
 
     </div>
 
 
-    <div id="groupMembers" class="column is-4 m-1 is-flex is-justify-content-center">
 
-        <div>
-            <p class="title ">Group Members</p>
 
-            {{#if group.group_members.length}}
-            {{#each group.group_members as |member|}}
+    <div id="groupMembers" class="column is-4 p-3 my-3">
 
-            <p class="buttons is-flex is-justify-content-center">
-                
-                    <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
-                            <i class="fa-regular fa-face-smile"></i></span>
-                        <span>{{member.username}}</span>
-                    </button>
-            </p>
 
-            {{/each}}
-        {{/if}}
+
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Group Members</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#if group.group_members.length}}
+                {{#each group.group_members as |member|}}
+                <tr>
+                    <td>{{member.username}}</td>
+                </tr>
+                {{/each}}
+                {{/if}}
+
+                <tr>
+                    <td>Lulu</td>
+
+                </tr>
+                <tr>
+                    <td>Clay</td>
+
+                </tr>
+                <tr>
+                    <td>Joseph</td>
+                </tr>
+                <tr>
+                    <td>Inna</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="Add a Member">
+            </div>
+            <div class="control">
+                <a class="button is-info">
+                    Search
+                </a>
+            </div>
+        </div>
 
 
     </div>
-
-</div>
