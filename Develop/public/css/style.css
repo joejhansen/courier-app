@@ -15,6 +15,18 @@ body {
 
 #mainPage-box {
   width: 540px;
+  border-radius: 50px;
+}
+
+#mainPage-box:hover  {
+  transform: scale(1.1);
+}
+
+#mainPage-flex {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 }
 
 .new-post-form{
@@ -27,6 +39,10 @@ body {
 
 #bttnimg {
   size: 10px;
+}
+
+#grpButton:hover {
+  transform: scale(1.2);
 }
 
 #footer {

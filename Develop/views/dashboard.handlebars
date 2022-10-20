@@ -3,73 +3,66 @@
 
 <div>
 
-    <div class="column m-5">
+    <div class="columns m-5">
 
-        <div class="columns is-mobile">
 
-            {{!-- <div class="column m-1">
-
+        <div class="column is-8 m-1">
+            <div class="box">
+                <p class="title">Your files and posts</p>
                 <div class="box">
-                    <p class="title">Add a story or file</p>
+                    <table class="table is-striped is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Group</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>title</td>
+                                <td>group name</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>group name</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
-
-            </div> --}}
-
-            <div class="column is-half m-1">
-                <div class="box">
-                    <p class="title">Your files and posts</p>
-                    <div class="box">
-                        <table class="table is-striped is-hoverable is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Group</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>title</td>
-                                    <td>group name</td>
-                                </tr>
-                                <tr>
-                                    <td>title</td>
-                                    <td>group name</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <a href="/dashboard/newpost"><button class="button is-danger" id="newPostBttn">Create New Post</button></a>
             </div>
-
-            <div class="column m-1">
-                <div class="box">
-                    <p class="title">Your Groups</p>
-                    <article class="panel is-primary">
-
-                        {{#if groups.length}}
-                        {{#each groups as |group|}}
-
-                        <a class="panel-block">
-                            <span class="panel-icon">
-                                <i class="fa-solid fa-users" aria-hidden="true"></i>
-                            </span>
-                            <p><a href="/group/{{id}}">{{group_name}}</a></p>
-                        </a>
-                        {{/each}}
-                        {{else}}
-                       
-                        <p>You do not have any groups yet!</p>
-                </div>
-
-                {{/if}}
-                </article>
-                <button class="js-modal-trigger button is-primary" data-target="modal-newGroup" id="newGroupBttn">
-                    Create New Group</button>
-            </div>
-
+            <a href="/dashboard/newpost"><button class="button is-danger" id="newPostBttn">Create New
+                    Post</button></a>
         </div>
+
+        <div class="column is-4 m-1 is-flex is-justify-content-center">
+            <div >
+                <p class="title ">Your Groups</p>
+
+                {{#if groups.length}}
+                {{#each groups as |group|}}
+
+                <p class="buttons is-flex is-justify-content-center">
+                    <a href="/group/{{id}}">
+                        <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
+                                <i class="fa-solid fa-users"></i></span>
+                            <span>{{group_name}}</span>
+                        </button></a>
+                </p>
+
+                {{/each}}
+                {{else}}
+
+                <p class="pb-3">You do not have any groups yet!</p>
+            </div>
+
+            {{/if}}
+
+            <button class="js-modal-trigger button is-primary" data-target="modal-newGroup" id="newGroupBttn">
+                Create New Group</button>
+        </div>
+
+
 
     </div>
 </div>

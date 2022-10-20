@@ -1,10 +1,10 @@
 const createGroupHandler = async (event) => {
-    event.preventDefulat();
+    event.preventDefault();
 
     const group_name = document.querySelector('#groupName').value.trim()
 
     if (group_name) {
-            const response = await fetch(`/api/group`, {
+            const response = await fetch('/api/groups', {
                 method: 'POST',
                 body: JSON.stringify({ group_name }),
                 headers: { 'Content-Type': 'application/json' },

@@ -1,5 +1,20 @@
 const router = require('express').Router();
-const { Group } = require('../../models');
+const { Group, Post, User } = require('../../models');
+
+
+router.get('/', async (req, res) => {
+    try {
+      const groupData = await Group.findAll({
+        include: [User, Post]
+      })
+      res.status(200).json(groupData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+
+
 
 router.post('/', async (req, res) => {
     try {
