@@ -48,7 +48,7 @@ router.get('/newpost', withAuth, (req, res) => {
 
 router.get('/group/:id', withAuth, async (req, res) => { 
     try {
-        const groupData = await Group.findAll({
+        const groupData = await Post.findAll({
             where: {group_id: req.params.id}
         });
         const groupPosts = groupData.map((group) => group.get({ plain: true }));
