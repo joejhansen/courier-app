@@ -15,7 +15,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
     const group = groupData.get({ force: true })
 
-    // group.group_members.length
+    // res.body.group.group_members.length
     // group.group_members[n]
 
     const logged_in = req.session.logged_in
