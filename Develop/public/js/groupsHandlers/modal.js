@@ -7,7 +7,6 @@ const closeModal = document.querySelector('.delete');
 newGroupBttn.addEventListener('click', () => {
     modal.classList.add('is-active');
 });
-console.log('click')
 
 modalBg.addEventListener('click', () => {
     modal.classList.remove('is-active');

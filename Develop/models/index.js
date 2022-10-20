@@ -10,7 +10,8 @@ User.belongsToMany(Group, {
 });
 
 Group.belongsTo(User, {
-    foreignKey: 'group_admin'
+    foreignKey: 'group_admin',
+    through: UserGroups
 });
 
 // Group.belongsToMany(User, {
