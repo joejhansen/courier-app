@@ -4,20 +4,29 @@ const withAuth = require('../../utils/auth')
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
-    const groupData = await Post.findAll({
-      where: { group_id: req.params.id }
+    const groupPostData = await Post.findAll({
+      where: { group_id: req.params.id }, 
     });
-    const groupPosts = groupData.map((group) => group.get({ plain: true }));
+    const groupPosts = groupPostData.map((group) => group.get({ plain: true }));
+
+    const groupData = await Group.findByPk(req.params.id, {
+      include: [User]
+    })
+
+    const group = groupData.get({ force: true })
+
+    // group.group_members.length
+    // group.group_members[n]
 
     const logged_in = req.session.logged_in
-    res.render("group", { groupPosts, logged_in })
+    res.render("group", { groupPosts, logged_in, group })
   } catch (error) {
     res.status(500).json(error);
   }
 
 });
 
-
+// groupPost
 
 
 router.post('/', async (req, res) => {
