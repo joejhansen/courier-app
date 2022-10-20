@@ -46,18 +46,4 @@ router.get('/newpost', withAuth, (req, res) => {
 });
 
 
-router.get('/group/:id', withAuth, async (req, res) => { 
-    try {
-        const groupData = await Post.findAll({
-            where: {group_id: req.params.id}
-        });
-        const groupPosts = groupData.map((group) => group.get({ plain: true }));
-       res.render("group", {groupPosts})
-    } catch (error) {
-        res.status(500).json(error);
-    }
-    
-});
-
-
 module.exports = router;
