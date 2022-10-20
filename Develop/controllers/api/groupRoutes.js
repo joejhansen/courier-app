@@ -5,7 +5,8 @@ const withAuth = require('../../utils/auth')
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const groupData = await Post.findAll({
-      where: { group_id: req.params.id }
+      where: { group_id: req.params.id },
+      include: [User]
     });
     const groupPosts = groupData.map((group) => group.get({ plain: true }));
 

@@ -1,1 +1,32 @@
 <p>hello</p>
+
+<div class="columns">
+    <div id="groupPosts" class="column is-two-thirds">
+
+
+    </div>
+
+
+    <div id="groupMembers" class="column is-4 m-1 is-flex is-justify-content-center">
+
+        <div>
+            <p class="title ">Group Members</p>
+
+            {{#if group.group_members.length}}
+            {{#each group.group_members as |member|}}
+
+            <p class="buttons is-flex is-justify-content-center">
+                
+                    <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
+                            <i class="fa-regular fa-face-smile"></i></span>
+                        <span>{{member.username}}</span>
+                    </button>
+            </p>
+
+            {{/each}}
+        {{/if}}
+
+
+    </div>
+
+</div>
