@@ -34,13 +34,13 @@ password: {
     validate: {
         len: [8, 12],
     },
-    group_id: {
-    type: DataTypes.INTEGER,
-    references: {
-        model: 'group',
-        key: 'id'
-    }
-}
+//     group_id: {
+//     type: DataTypes.INTEGER,
+//     references: {
+//         model: 'group',
+//         key: 'id'
+//     }
+// }
 },
 },
 {
