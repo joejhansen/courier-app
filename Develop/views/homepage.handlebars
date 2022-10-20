@@ -5,7 +5,7 @@
 
 <div id="mainPage-flex">
     <div class="card m-4 p-3 has-text-centered" id="mainPage-box">
-        <a href="/dashboard/group/{{id}}"><p class="has-text-weight-semibold is-size-4 pb-2">{{group_name}}</p>
+        <a href="api/groups/{{id}}"><p class="has-text-weight-semibold is-size-4 pb-2">{{group_name}}</p>
         <p>Admin: {{user.username}} | {{posts.length}} posts | Created on {{format_date createdAt}}</p></a>
     </div>
 </div>

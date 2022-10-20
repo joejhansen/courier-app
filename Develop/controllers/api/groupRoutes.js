@@ -6,6 +6,7 @@ router.get('/:id', withAuth, async (req, res) => {
   try {
     const groupPostData = await Post.findAll({
       where: { group_id: req.params.id }, 
+
     });
     const groupPosts = groupPostData.map((group) => group.get({ plain: true }));
 
