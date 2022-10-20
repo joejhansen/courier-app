@@ -159,10 +159,10 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                    {{#if groups.length}}
-                    {{#each groups as |group|}}
-                    <a href="#" data-group-id="{{id}}" class="dropdown-item">
-                        {{group_name}}
+                    {{#if userGroups.length}}
+                    {{#each userGroups as |group|}}
+                    <a href="#" data-group-id="{{group.group_id}}" class="dropdown-item">
+                        {{group.group_id}}
                     </a>
                     {{/each}}
                     {{/if}}

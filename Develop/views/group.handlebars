@@ -48,10 +48,10 @@
             </thead>
 
             <tbody>
-                {{#if group.group_members.length}}
-                {{#each group.group_members as |member|}}
+                {{#if groupMembers.length}}
+                {{#each groupMembers as |member|}}
                 <tr>
-                    <td>{{member.username}}</td>
+                    <td>{{member}}</td>
                 </tr>
                 {{/each}}
                 {{/if}}

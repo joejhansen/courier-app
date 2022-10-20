@@ -24,11 +24,8 @@ Group.init(
             }
         },
         group_members: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
+            type: DataTypes.TEXT,
+            allowNull: false,
         }
     },
     {
