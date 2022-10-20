@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
 <div class="wysiwyg-form">
@@ -25,43 +24,21 @@
                 <span class="editor-btn button" data-action="strikeThrough" title="strikethrough">
                     <img src="https://img.icons8.com/fluency-systems-filled/30/000000/strikethrough.png"/>
                 </span>
-            <!-- </div> -->
-        
-
-        <!-- <div class="box"> -->
-            <div class="dropdown is-hoverable">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png">
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                          </span>
-                    </button>
-                </div>
-
-                <div class="editor-btn dropdown-menu" id="dropdown-menu" role="menu">
-                    <div class="dropdown-content">
-                        <a data-action="justifyLeft" data-style="textAlign: left" class="dropdown-item" title="Left Align">
-                            <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png">
-                        </a>
-                    </div>
-                    <div class="dropdown-content">
-                        <a data-action="justifyCenter" data-style="textAlign: center"class="dropdown-item" title="Center Align">
-                            <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-center.png">
-                        </a>
-                    </div>
-                    <div class="dropdown-content">
-                        <a  data-action="justifyRight" data-style="textAlign: right"class="dropdown-item" title="Right Align">
-                            <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-right.png">
-                        </a>
-                    </div>
-                    <div class="dropdown-content">
-                        <a data-action="formatBlock" data-style="textAlign: justify"class="dropdown-item" title="Justify">
-                            <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-justify.png">
-                        </a>
-                    </div>
-                </div>
-            </div>    
+            
+            <div class="box">
+                    <span class="editor-btn" data-action="justifyLeft" data-styles="textAlign: left" title="Justify Left">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyCenter" data-styles="textAlign: center" title="Justify Center">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-center.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyRight" data-styles="textAlign: right" title="Justify Right">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-right.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyFull" data-styles="textAlign: justify" title="Justify">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-justify.png"/>
+                    </span>
+            </div>
        
             <span class="editor-btn button" data-action="insertOrderedList" data-tag-name="ol" title="Insert Ordered List">
                 <img src="https://img.icons8.com/fluency-systems-filled/48/000000/numbered-list.png"/>
@@ -75,9 +52,6 @@
             <span class="editor-btn button" data-action="outdent" data-required-tag="li" title="Outdent">
                 <img src="https://img.icons8.com/fluency-systems-filled/48/000000/indent.png"/>
             </span>
-        <!-- </div> -->
-        
-        <!-- <div class="box"> -->
             <span class="editor-btn button" data-action="insertHorizontalRule"  title="Insert Horizontal Line">
                 <img src="https://img.icons8.com/fluency-systems-filled/48/000000/horizontal-line.png"/>
             </span>
@@ -92,33 +66,18 @@
                 <span class="editor-btn button" data-action="removeFormat"  title="Remove Formatting">
                     <img src="https://img.icons8.com/fluency-systems-filled/48/000000/remove-format.png"/>
                 </span>
-                <!-- <span class="editor-btn button" data-action="createLink"  title="Insert Link">
-                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/add-link.png"/>
-                </span>
-                <span class="editor-btn button" data-action="unlink"  title="Remove Link" data-tag-name="a">
-                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/delete-link.png"/>
-                </span> -->
             </div>
         </div>
     </div>
 
     <div class="content-area" style="margin: 20px">
-        <div class="textarea" placeholder="Type or copy/paste your writing here. Otherwise, use the pdf uploader to the side!" rows="25" contenteditable>
-            <div class="visuell-view" contenteditable></div>
-        </div>
+        <!-- <div class="textarea" placeholder="Type or copy/paste your writing here. Otherwise, use the pdf uploader to the side!" rows="25" contenteditable> -->
+            <textarea rows="25" class="visuell-view" style="border: solid 1px black" contenteditable></textarea>
+        <!-- </div> -->
     </div>
 </div>
 
-<div class="modal">
-    <div class="modal-background"></div>
-    <button class="delete" aria-label="close"></button>
-    <div class="modal-content">
-        <h3>Insert Link</h3>
-        <input type="text" id="linkValue" placeholder="Paste the link URL here...">
-        <div class="row"><input type="checkbox" id="new-tab"><label for="new-tab">Open this link in a new tab?</label></div>
-        <button class="modal-close is-large done" aria-label="Done">Done</button>
-    </div>
-</div>
+<button class="post-btn button">Post!</button>
  
 <script src="./wysiwyg.js"></script>
 </body>
