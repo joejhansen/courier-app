@@ -1,53 +1,54 @@
 const router = require('express').Router();
 const { Group, Post, User } = require('../../models');
 
-
-router.get('/', async (req, res) => {
-    try {
-      const groupData = await Group.findAll({
-        include: [User, Post]
-      })
-      res.status(200).json(groupData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-
-
-
-
 router.post('/', async (req, res) => {
+    const body = req.body;
+    
     try {
-      const newGroup = await Group.create({
-        group_name: req.body.group_name,
-        group_admin: req.session.user_id,
-      });
-      if (!req.body.group_name) {
-        return res.status(401).json({ msg: "No group!" })
-      }
-      res.status(200).json(newGroup);
+        const newGroup = await Group.create({ ...body, user_id: req.session.user_id,})
+        res.json(newGroup);
     } catch (err) {
-      res.status(400).json(err);
+        res.status(500).json(err);
     }
-  });
+});
 
-  router.delete('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-      const groupData = await Group.destroy({
+      const [affectedRows] = await Group.update(req.body, {
+
         where: {
           id: req.params.id,
         },
       });
   
-      if (!groupData) {
-        res.status(404).json({ message: 'No project found with this id!' });
-        return;
+
+      if (affectedRows > 0) {
+        res.status(200).end();
+      } else {
+        res.status(404).end();
       }
-  
-      res.status(200).json(groupData);
+
     } catch (err) {
       res.status(500).json(err);
     }
   });
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const [affectedRows] = Group.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
