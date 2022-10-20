@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Group, Post, User } = require('../../models');
 
 router.post('/', async (req, res) => {
+
   const body = req.body;
 
   try {
@@ -20,6 +21,7 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.put('/:id', async (req, res) => {
   try {
