@@ -1,11 +1,32 @@
 <div class="columns m-5">
 
+    {{!-- Group Posts --}}
 
+{{!-- this does not work properly yet!!! --}}
     <div id="groupPosts" class="column is-two-thirds">
 
+        {{#if groupPosts.length}}
+
+        {{#each groupPosts as |groupPost|}}
         <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
 
-            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
+            <a href="/posts/{{id}}"><strong>{{groupPost.title}}</strong></a>
+            <div>
+                <small>By [username] | Date</small>
+            </div>
+
+        </div>
+        {{/each}}
+
+        {{else}}
+
+        <p>There are no posts in this group yet!</p>
+
+        {{/if}}
+
+        {{!-- <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
+
+            <a href="/api/posts/{{id}}"><strong>Post title mockup</strong></a>
             <div>
                 <small>By [username] | Date</small>
             </div>
@@ -19,26 +40,15 @@
                 <small>By [username] | Date</small>
             </div>
 
-        </div>
-
-        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
-
-            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
-            <div>
-                <small>By [username] | Date</small>
-            </div>
-
-        </div>
-
+        </div> --}}
+        <a href="/dashboard/newpost"><button class="button is-danger" id="newPostBttn">Create New Post</button></a>
 
     </div>
 
 
 
-
+    {{!-- Group Members --}}
     <div id="groupMembers" class="column is-4 p-3 my-3">
-
-
 
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
@@ -55,21 +65,6 @@
                 </tr>
                 {{/each}}
                 {{/if}}
-
-                <tr>
-                    <td>Lulu</td>
-
-                </tr>
-                <tr>
-                    <td>Clay</td>
-
-                </tr>
-                <tr>
-                    <td>Joseph</td>
-                </tr>
-                <tr>
-                    <td>Inna</td>
-                </tr>
 
             </tbody>
 
