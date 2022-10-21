@@ -13,10 +13,20 @@ router.get('/:id', async (req, res) => {
       ],
     });
 
+    const commentData = await Comment.findAll({
+      where: {
+        post_id: req.params.id
+      }
+    },{
+      include: [User]
+    })
+
     if (postData) {
       const post = postData.get({ plain: true });
 
-      res.render('single-post', { post });         
+      const comments = commentData.map((comment) => comment.get({ plain: true}))
+
+      res.render('single-post', { post, comments });         
     } else {
       res.status(404).end();
     }
