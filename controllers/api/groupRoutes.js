@@ -5,9 +5,8 @@ const withAuth = require('../../utils/auth')
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const groupPostData = await Post.findAll({
-      where: { group_id: req.params.id }, 
-    }, {
-      include: [User]
+      where: { group_id: req.params.id },
+      include: [User] 
     });
     const groupPosts = groupPostData.map((group) => group.get({ plain: true }));
 
@@ -17,11 +16,11 @@ router.get('/:id', withAuth, async (req, res) => {
     
     const groupMembers = JSON.parse(group.group_members)
 
-    console.log(group)
+    // console.log(group)
     // res.body.group.group_members.length
     // group.group_members[n]
-    console.log(groupMembers)
-
+    // console.log(groupMembers)
+    console.log(groupPosts)
     const logged_in = req.session.logged_in
     res.render("group", { groupPosts, logged_in, groupMembers })
     // {{#each groupPost }}

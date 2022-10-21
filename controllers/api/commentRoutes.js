@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         ...req.body,
         user_id: req.session.user_id,
       });
-      res.status(200).json(newComment);
+      res.status(200).redirect(`/api/posts/${req.body.post_id}`)
     } catch (err) {
       res.status(500).json(err);
     }

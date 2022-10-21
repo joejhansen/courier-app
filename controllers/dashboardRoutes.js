@@ -3,21 +3,22 @@ const { User, Post, Group, UserGroups } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', withAuth, async (req,res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
-        const userData = await Post.findAll({
-            where: {user_id: req.session.user_id},
-            include: [User]
+        const postData = await Post.findAll({
+            where: { user_id: req.session.user_id },
+            include: [User, Group]
         });
-        const posts = userData.map((post) => post.get({ plain: true }));
+        const posts = postData.map((post) => post.get({ plain: true }));
+
         const groupData = await Group.findAll({
-            where: {group_admin: req.session.user_id}
+            where: { group_admin: req.session.user_id }
         });
         const groups = groupData.map((group) => group.get({ plain: true }));
 
         const user = await User.findByPk(req.session.user_id)
-        const U = user.get({plain: true})
-
+        const U = user.get({ plain: true })
+        console.log(posts)
         res.render('dashboard', {
             posts,
             groups,
@@ -30,9 +31,9 @@ router.get('/', withAuth, async (req,res) => {
 });
 
 
-router.get('/newpost', withAuth, async (req, res) => { 
+router.get('/newpost', withAuth, async (req, res) => {
     try {
-        if(req.session.logged_in) {
+        if (req.session.logged_in) {
 
             const userGroupsData = await UserGroups.findAll({
                 where: {
@@ -40,13 +41,11 @@ router.get('/newpost', withAuth, async (req, res) => {
                 }
             })
 
-            console.log(`\n${userGroupsData}\n`)
-
             const userGroups = await userGroupsData.map((group) => group.get({ plain: true }))
 
             console.log(userGroups)
 
-            res.render('newPost',{
+            res.render('newPost', {
                 userGroups,
                 logged_in: req.session.logged_in
             });
@@ -56,7 +55,7 @@ router.get('/newpost', withAuth, async (req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
-    
+
 });
 
 

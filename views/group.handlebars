@@ -10,7 +10,7 @@
 
             <a href="/api/posts/{{post.id}}"><strong>{{post.title}}</strong></a>
             <div>
-                <small>By {{post.user_id.username}} | Date</small>
+                <small>By {{post.user.username}} | {{format_date post.createdAt}}</small>
             </div>
 
         </div>

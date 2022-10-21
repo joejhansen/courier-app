@@ -3,9 +3,9 @@
   <article class="message is-dark my-6">
 
     <div class="message-header">
-      <p>{{post.title}}</p> <small>{{post.user_id.username}}</small>
+      <p>{{post.title}}</p> <small>By {{post.user.username}}</small>
     </div>
-    <div data-post-id="{{post.id}}" data-user-id="{{post.user_id}}" data-group-id="{{post.group_id}}"></div>
+    <div id="postInfo" data-post-id="{{post.id}}" data-group-id="{{post.group_id}}"></div>
     <div class="message-body" id="post-body">
       {{post.post_content}}
     </div>
@@ -28,7 +28,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{comment.user_id.username}}</strong> <small>{{format_date createdAt}}</small>
+          <strong>{{comment.user.username}}</strong> <small>{{format_date comment.createdAt}}</small>
           <br>
           {{comment.comment_text}}
         </p>
@@ -50,7 +50,7 @@
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
-            <a class="button is-info">Submit</a>
+            <a id="submitCommentBtn" class="button is-info">Submit</a>
           </div>
         </div>
 
@@ -58,5 +58,5 @@
     </div>
   </article>
 
-
+<script src="/js/commentsHandlers/submitCommentHandler.js"></script>
 </div>

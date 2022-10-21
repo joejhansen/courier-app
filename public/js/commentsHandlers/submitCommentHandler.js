@@ -3,15 +3,16 @@ const submitCommentHandler = async (event) => {
 
     const comment_text = document.querySelector('.textarea').value.trim();
     const post_id = document.querySelector('#postInfo').getAttribute('data-post-id')
-    const user_id = document.querySelector('#postInfo').getAttribute('data-user-id')
+    // const user_id = document.querySelector('#postInfo').getAttribute('data-user-id')
     const group_id = document.querySelector('#postInfo').getAttribute('data-group-id')
-    
 
-    if (comment_text && post_id && user_id && group_id) {
+    // return console.log(comment_text, post_id, group_id)
+
+    if (comment_text && post_id && group_id) {
         try {
-            const response = await fetch('comments', {
+            const response = await fetch('/api/comments', {
                 method: 'POST',
-                body: JSON.stringify({ user_id, post_id, group_id, comment_text }),
+                body: JSON.stringify({ post_id, group_id, comment_text }),
                 headers: { 'Content-Type': 'application/json' },
             })
 
@@ -28,4 +29,4 @@ const submitCommentHandler = async (event) => {
     }
 }
 
-document.querySelector('#commentForm').addEventListener('submit', submitCommentHandler);
+document.querySelector('#submitCommentBtn').addEventListener('click', submitCommentHandler);

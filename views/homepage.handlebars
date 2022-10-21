@@ -1,6 +1,4 @@
 {{#if groups.length}}
-
-
 {{#each groups as |group|}}
 
 <div id="mainPage-flex">
@@ -9,12 +7,7 @@
         <p>Admin: {{user.username}} | {{posts.length}} posts | Created on {{format_date createdAt}}</p></a>
     </div>
 </div>
-
 {{/each}}
-
-
-
-
 {{else}}
 
 <h4 class="text-center">There are no groups yet!</h4>

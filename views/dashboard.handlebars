@@ -18,15 +18,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#if posts.length}}
+                            {{#each posts as |post|}}
                             <tr>
-                                <td>title</td>
-                                <td>group name</td>
+                                <td><a href="/api/posts/{{post.id}}">{{post.title}}</a></td>
+                                <td><a href="/api/groups/{{post.group.id}}">{{post.group.group_name}}</a></td>
                             </tr>
+                            {{/each}}
+                            {{else}}
                             <tr>
-                                <td>title</td>
-                                <td>group name</td>
+                                <td>No posts yet...</td>
                             </tr>
+                            {{/if}}
 
+                            {{!-- <tr>
+                                <td>title</td>
+                                <td>group name</td>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
@@ -36,7 +44,7 @@
         </div>
 
         <div class="column is-4 m-1 is-flex is-justify-content-center">
-            <div >
+            <div>
                 <p class="title ">Your Groups</p>
 
                 {{#if groups.length}}
@@ -58,7 +66,8 @@
 
             {{/if}}
 
-            <button class="js-modal-trigger button is-primary is-flex is-align-content-center" data-target="modal-newGroup" id="newGroupBttn">
+            <button class="js-modal-trigger button is-primary is-flex is-align-content-center"
+                data-target="modal-newGroup" id="newGroupBttn">
                 Create New Group</button>
         </div>
 

@@ -145,11 +145,11 @@
                     rows="15"></textarea>
             </div>
         </div>
-        <div>
+        <div class="user-groups">
             {{#if userGroups.length}}
-            {{#each userGroups as |group|}}
-            <a href="#" data-group-id="{{group.group_id}}" class="user-groups">
-                {{group.group_id}}
+            {{#each userGroups as |userGroup|}}
+            <a href="#" data-group-id="{{userGroup.group_id}}">
+                {{userGroup.group_id}}
             </a>
             {{/each}}
             {{/if}}
