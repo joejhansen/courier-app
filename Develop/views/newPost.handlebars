@@ -145,10 +145,20 @@
                     rows="15"></textarea>
             </div>
         </div>
+        <div>
+            {{#if userGroups.length}}
+            {{#each userGroups as |group|}}
+            <a href="#" data-group-id="{{group.group_id}}" class="user-groups">
+                {{group.group_id}}
+            </a>
+            {{/each}}
+            {{/if}}
+        </div>
+        <div id="groupIDValue" class="is-hidden">
 
-
+        </div>
         {{!-- groups dropdown --}}
-        <div class="dropdown pt-5 is-hoverable">
+        {{!-- <div class="dropdown pt-5 is-hoverable">
             <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                     <span>Select Group</span>
@@ -168,7 +178,7 @@
                     {{/if}}
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="btn-group" role="group" aria-label="Basic outlined example">
