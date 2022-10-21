@@ -1,0 +1,62 @@
+<div class="container is-max-widescreen ">
+
+  <article class="message is-dark my-6">
+
+    <div class="message-header">
+      <p>{{post.title}}</p> <small>{{post.user_id.username}}</small>
+    </div>
+    <div data-post-id="{{post.id}}" data-user-id="{{post.user_id}}" data-group-id="{{post.group_id}}"></div>
+    <div class="message-body" id="post-body">
+      {{post.post_content}}
+    </div>
+
+  </article>
+</div>
+
+<div>
+
+</div>
+
+<div class="container is-max-widescreen my-6">
+  {{#if comments.length}}
+  {{#each comments as |comment|}}
+  {{!-- Comments --}}
+  <article class="media p-3" id="comments">
+    <figure class="media-left">
+      <i class="fa-solid fa-circle-user"></i>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{comment.user_id.username}}</strong> <small>{{format_date createdAt}}</small>
+          <br>
+          {{comment.comment_text}}
+        </p>
+      </div>
+    </div>
+  </article>
+  {{/each}}
+  {{/if}}
+
+  {{!-- Add a Comment --}}
+  <article class="media">
+
+    <div class="media-content">
+      <div class="field">
+        <p class="control">
+          <textarea class="textarea" placeholder="Add a comment..."></textarea>
+        </p>
+      </div>
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <a class="button is-info">Submit</a>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+  </article>
+
+
+</div>

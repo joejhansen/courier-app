@@ -1,0 +1,94 @@
+<p class="is-size-4 p-5 has-text-weight-semibold">Welcome, {{U.username}}!</p>
+
+
+<div>
+
+    <div class="columns m-5">
+
+
+        <div class="column is-8 m-1">
+            <div class="box">
+                <p class="title">Your files and posts</p>
+                <div class="box">
+                    <table class="table is-striped is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Group</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>title</td>
+                                <td>group name</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>group name</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a href="/dashboard/newpost"><button class="button is-danger" id="newPostBttn">Create New
+                    Post</button></a>
+        </div>
+
+        <div class="column is-4 m-1 is-flex is-justify-content-center">
+            <div >
+                <p class="title ">Your Groups</p>
+
+                {{#if groups.length}}
+                {{#each groups as |group|}}
+
+                <p class="buttons is-flex is-justify-content-center">
+                    <a href="/api/groups/{{id}}">
+                        <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
+                                <i class="fa-solid fa-users"></i></span>
+                            <span>{{group_name}}</span>
+                        </button></a>
+                </p>
+
+                {{/each}}
+                {{else}}
+
+                <p class="pb-3">You do not have any groups yet!</p>
+            </div>
+
+            {{/if}}
+
+            <button class="js-modal-trigger button is-primary is-flex is-align-content-center" data-target="modal-newGroup" id="newGroupBttn">
+                Create New Group</button>
+        </div>
+
+
+
+    </div>
+</div>
+
+</div>
+
+
+{{!-- modal --}}
+<div id="modal-newGroup" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Create New Group</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <form id="groupForm">
+            <section class="modal-card-body">
+                <input id="groupName" class="input is-primary" type="text" placeholder="Enter Group Name">
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-success">Save</button>
+            </footer>
+        </form>
+    </div>
+</div>
+
+
+<script src="/js/groupsHandlers/modal.js"></script>
+<script src="/js/groupsHandlers/createGroupHandler.js"></script>

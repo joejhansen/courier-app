@@ -1,0 +1,63 @@
+<div class="columns m-5">
+
+    {{!-- Group Posts --}}
+
+    {{!-- this does not work properly yet!!! --}}
+    <div id="groupPosts" class="column is-two-thirds">
+        {{#if groupPosts.length}}
+        {{#each groupPosts as |post|}}
+        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
+
+            <a href="/api/posts/{{post.id}}"><strong>{{post.title}}</strong></a>
+            <div>
+                <small>By {{post.user_id.username}} | Date</small>
+            </div>
+
+        </div>
+        {{/each}}
+        {{else}}
+        <p>No posts yet... stay tuned!!</p>
+        {{/if}}
+
+        <a href="/dashboard/newpost"><button class="button is-danger" id="newPostBttn">Create New Post</button></a>
+
+    </div>
+
+
+
+    {{!-- Group Members --}}
+    <div id="groupMembers" class="column is-4 p-3 my-3">
+
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Group Members</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#if groupMembers.length}}
+                {{#each groupMembers as |member|}}
+                <tr>
+                    <td>{{member}}</td>
+                </tr>
+                {{/each}}
+                {{/if}}
+
+            </tbody>
+
+        </table>
+
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="Add a Member">
+            </div>
+            <div class="control">
+                <a class="button is-info">
+                    Search
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -16,8 +16,9 @@ const hbs = exphbs.create({ helpers });
 
 const sess = {
     secret: 'Super secret secret',
+    // secret: process.env.DB_SESSION_SECRET,
     cookie: {
-        maxAge: 300000,
+        maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
@@ -41,6 +42,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
