@@ -1,6 +1,8 @@
 <div class="columns m-5">
 
+    {{!-- Group Posts --}}
 
+{{!-- this does not work properly yet!!! --}}
     <div id="groupPosts" class="column is-two-thirds">
         {{#if groupPosts.length}}
         {{#each groupPosts as |post|}}
@@ -17,11 +19,8 @@
     </div>
 
 
-
-
+    {{!-- Group Members --}}
     <div id="groupMembers" class="column is-4 p-3 my-3">
-
-
 
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
@@ -38,6 +37,7 @@
                 </tr>
                 {{/each}}
                 {{/if}}
+
             </tbody>
 
         </table>
