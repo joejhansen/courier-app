@@ -1,7 +1,7 @@
 const submitCommentHandler = async (event) => {
     event.preventDefault();
 
-    const comment_text = document.querySelector('.textArea').value.trim();
+    const comment_text = document.querySelector('.textarea').value.trim();
     const post_id = document.querySelector('#postInfo').getAttribute('data-post-id')
     const user_id = document.querySelector('#postInfo').getAttribute('data-user-id')
     const group_id = document.querySelector('#postInfo').getAttribute('data-group-id')

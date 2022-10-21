@@ -1,32 +1,32 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [
-        User,
-      //   {
-      //     model: Comment,
-      //     include: [User],
-      //   },
-      ],
+      include: [{
+        model: User
+      }],
     });
+    console.log(postData)
 
     const commentData = await Comment.findAll({
       where: {
         post_id: req.params.id
-      }
-    },{
-      include: [User]
+      },
+      include: [{
+        model: User
+      }],
     })
-
+    console.log(commentData)
     if (postData) {
       const post = postData.get({ plain: true });
 
-      const comments = commentData.map((comment) => comment.get({ plain: true}))
+      const comments = commentData.map((comment) => comment.get({ plain: true }))
 
-      res.render('single-post', { post, comments });         
+      const logged_in = req.session.logged_in
+
+      res.status(200).render('single-post', { post, comments, logged_in });
     } else {
       res.status(404).end();
     }

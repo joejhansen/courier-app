@@ -23,42 +23,41 @@
 
     </div>
 
-</div>
 
 
-{{!-- Group Members --}}
-<div id="groupMembers" class="column is-4 p-3 my-3">
+    {{!-- Group Members --}}
+    <div id="groupMembers" class="column is-4 p-3 my-3">
 
-    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-        <thead>
-            <tr>
-                <th>Group Members</th>
-            </tr>
-        </thead>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Group Members</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            {{#if groupMembers.length}}
-            {{#each groupMembers as |member|}}
-            <tr>
-                <td>{{member}}</td>
-            </tr>
-            {{/each}}
-            {{/if}}
+            <tbody>
+                {{#if groupMembers.length}}
+                {{#each groupMembers as |member|}}
+                <tr>
+                    <td>{{member}}</td>
+                </tr>
+                {{/each}}
+                {{/if}}
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
-    <div class="field has-addons">
-        <div class="control">
-            <input class="input" type="text" placeholder="Add a Member">
-        </div>
-        <div class="control">
-            <a class="button is-info">
-                Search
-            </a>
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="Add a Member">
+            </div>
+            <div class="control">
+                <a class="button is-info">
+                    Search
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
 </div>

@@ -3,8 +3,9 @@
   <article class="message is-dark my-6">
 
     <div class="message-header">
-      <p>{{post.title}}</p> <small>{{post.user_id.username}}</small>
+      <p>{{post.title}}</p> <small>{{post.user_id}}</small>
     </div>
+    <div data-post-id="{{post.id}}" data-user-id="{{post.user_id}}" data-group-id="{{post.group_id}}"></div>
     <div class="message-body" id="post-body">
       {{post.post_content}}
     </div>
