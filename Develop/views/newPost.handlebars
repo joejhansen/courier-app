@@ -4,147 +4,73 @@
         <input id="title" class="input mb-5" type="text" placeholder="Post Title">
 
         <div class="wysiwyg-form">
-            <div class="toolbar">
-                <div class="line">
-                    <div class="card has-background-white">
-                        <span class="editor-btn button is-small" title="bold">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/bold.png" /></figure>
-                        </span>
-                        <span class="editor-btn button is-small" title="italics">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/italic.png" /></figure>
-                        </span>
-                        <span class="editor-btn button is-small" title="underline">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/underline.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" title="strikethrough">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/30/000000/strikethrough.png" />
-                            </figure>
-                        </span>
-                        <!-- </div> -->
-
-
-                        <!-- <div class="box"> -->
-                        <div class="dropdown is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
-                                    <figure class="image is-24x24"><img
-                                            src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png">
-                                    </figure>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a data-action="justifyLeft" data-style="textAlign: left" class="dropdown-item"
-                                        title="Left Align">
-                                        <figure class="image is-24x24"><img
-                                                src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="dropdown-content">
-                                    <a data-action="justifyCenter" data-style="textAlign: center" class="dropdown-item"
-                                        title="Center Align">
-                                        <figure class="image is-24x24"><img
-                                                src="https://img.icons8.com/fluency-systems-filled/48/000000/align-center.png">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="dropdown-content">
-                                    <a data-action="justifyRight" data-style="textAlign: right" class="dropdown-item"
-                                        title="Right Align">
-                                        <figure class="image is-24x24"><img
-                                                src="https://img.icons8.com/fluency-systems-filled/48/000000/align-right.png">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="dropdown-content">
-                                    <a data-action="formatBlock" data-style="textAlign: justify" class="dropdown-item"
-                                        title="Justify">
-                                        <figure class="image is-24x24"><img
-                                                src="https://img.icons8.com/fluency-systems-filled/48/000000/align-justify.png">
-                                        </figure>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <span class="editor-btn button is-small" data-action="insertOrderedList" data-tag-name="ol"
-                            title="Insert Ordered List">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/numbered-list.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="insertUnorderedList" data-tag-name="ul"
-                            title="Insert Unordered List">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/bulleted-list.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="outdent" data-required-tag="li"
-                            title="Outdent">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/outdent.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="indent" data-required-tag="li"
-                            title="Indent">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/indent.png" /></figure>
-                        </span>
-                        <!-- </div> -->
-
-                        <!-- <div class="box"> -->
-                        <span class="editor-btn button is-small" data-action="insertHorizontalRule"
-                            title="Insert Horizontal Line">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/horizontal-line.png" />
-                            </figure>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="line">
-                    <div class="card">
-                        <span class="editor-btn button is-small" data-action="undo" title="Undo">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/undo--v1.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="removeFormat" title="Remove Formatting">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/remove-format.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="createLink" title="Insert Link">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/add-link.png" />
-                            </figure>
-                        </span>
-                        <span class="editor-btn button is-small" data-action="unlink" title="Remove Link"
-                            data-tag-name="a">
-                            <figure class="image is-24x24"><img
-                                    src="https://img.icons8.com/fluency-systems-filled/48/000000/delete-link.png" />
-                            </figure>
-                        </span>
-                    </div>
-                </div>
+    <div class="toolbar">
+        <div class="line">
+            <div class="box">
+                <span class="editor-btn button" data-action="bold" title="bold">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/bold.png"/>
+                </span>
+                <span class="editor-btn button" data-action="italic" title="italics">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/italic.png"/>
+                </span>
+                <span class="editor-btn button" data-action="underline" title="underline">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/underline.png"/>
+                </span>
+                <span class="editor-btn button" data-action="strikeThrough" title="strikethrough">
+                    <img src="https://img.icons8.com/fluency-systems-filled/30/000000/strikethrough.png"/>
+                </span>
+            
+            <div class="box">
+                    <span class="editor-btn" data-action="justifyLeft" data-styles="textAlign: left" title="Justify Left">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-left.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyCenter" data-styles="textAlign: center" title="Justify Center">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-center.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyRight" data-styles="textAlign: right" title="Justify Right">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-right.png"/>
+                    </span>
+                    <span class="editor-btn" data-action="justifyFull" data-styles="textAlign: justify" title="Justify">
+                        <img src="https://img.icons8.com/fluency-systems-filled/48/000000/align-justify.png"/>
+                    </span>
             </div>
+       
+            <span class="editor-btn button" data-action="insertOrderedList" data-tag-name="ol" title="Insert Ordered List">
+                <img src="https://img.icons8.com/fluency-systems-filled/48/000000/numbered-list.png"/>
+            </span>
+            <span class="editor-btn button" data-action="insertUnorderedList" data-tag-name="ul" title="Insert Unordered List">
+                <img src="https://img.icons8.com/fluency-systems-filled/48/000000/bulleted-list.png"/>
+            </span>
+            <span class="editor-btn button" data-action="indent" data-required-tag="li" title="Indent">
+                <img src="https://img.icons8.com/fluency-systems-filled/48/000000/outdent.png"/>
+            </span>
+            <span class="editor-btn button" data-action="outdent" data-required-tag="li" title="Outdent">
+                <img src="https://img.icons8.com/fluency-systems-filled/48/000000/indent.png"/>
+            </span>
+            <span class="editor-btn button" data-action="insertHorizontalRule"  title="Insert Horizontal Line">
+                <img src="https://img.icons8.com/fluency-systems-filled/48/000000/horizontal-line.png"/>
+            </span>
+        </div>
+        </div>
 
-            <div class="content-area">
-                <textarea id="textArea" class="textarea"
-                    placeholder="Type or copy/paste your writing here. Otherwise, use the pdf uploader to the side!"
-                    rows="15"></textarea>
+        <div class="line">
+            <div class="box">
+                <span class="editor-btn button" data-action="undo"  title="Undo">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/undo--v1.png"/>
+                </span>
+                <span class="editor-btn button" data-action="removeFormat"  title="Remove Formatting">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/000000/remove-format.png"/>
+                </span>
             </div>
         </div>
+    </div>
+
+    <div class="content-area" style="margin: 20px">
+        <!-- <div class="textarea" placeholder="Type or copy/paste your writing here. Otherwise, use the pdf uploader to the side!" rows="25" contenteditable> -->
+            <div class="visuell-view" style="border: solid 1px black" contenteditable></div>
+        <!-- </div> -->
+    </div>
+</div>
         <div>
             {{#if userGroups.length}}
             {{#each userGroups as |group|}}
@@ -190,3 +116,4 @@
 
 
 <script src="/js/postsHandlers/submitPostHandler.js"></script>
+<script src="/wysiwyg.js"></script>

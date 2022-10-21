@@ -46,9 +46,3 @@ function selectionChange(e) {
 });
 };
 
-postBtn.addEventListener('click', function(event) {
-    event.preventDefault;
-    let text = visuellView.textContent();
-    console.log(text);
-    console.log(textTwo);
-})
