@@ -2,35 +2,18 @@
 
 
     <div id="groupPosts" class="column is-two-thirds">
-
+        {{#if groupPosts.length}}
+        {{#each groupPosts as |post|}}
         <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
 
-            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
+            <a href="/api/posts/{{post.id}}"><strong>{{post.title}}</strong></a>
             <div>
-                <small>By [username] | Date</small>
+                <small>By {{post.user_id.username}} | Date</small>
             </div>
 
         </div>
-
-        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
-
-            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
-            <div>
-                <small>By [username] | Date</small>
-            </div>
-
-        </div>
-
-        <div class="postTitleBox p-3 my-3 is-flex is-justify-content-space-between">
-
-            <a href="/post/{{id}}"><strong>Post title mockup</strong></a>
-            <div>
-                <small>By [username] | Date</small>
-            </div>
-
-        </div>
-
-
+        {{/each}}
+        {{/if}}
     </div>
 
 
@@ -55,22 +38,6 @@
                 </tr>
                 {{/each}}
                 {{/if}}
-
-                <tr>
-                    <td>Lulu</td>
-
-                </tr>
-                <tr>
-                    <td>Clay</td>
-
-                </tr>
-                <tr>
-                    <td>Joseph</td>
-                </tr>
-                <tr>
-                    <td>Inna</td>
-                </tr>
-
             </tbody>
 
         </table>

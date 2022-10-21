@@ -2,34 +2,28 @@ const router = require('express').Router();
 const { User, Post } = require('../../models');
 
 router.get('/:id', async (req, res) => {
-  const id = req.params.id
   try {
-    const postData = await Post.findByPk(id, {
-      include: [User]
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        User,
+      //   {
+      //     model: Comment,
+      //     include: [User],
+      //   },
+      ],
     });
 
-    const postComment = await Comment.findAll({
-      where: {
-        post_id: postData.id,
-      }
-    })
+    if (postData) {
+      const post = postData.get({ plain: true });
 
-    if (!postData) {
-      res.status(404).json({ message: "no post data, sorry" })
+      res.render('single-post', { post });         
     } else {
-      const post = postData.get({ plain: true })
-      const comments = postComment.get({ plain: true })
-      // res.status(200).json(post)
-      res.status(200).render('single-post', {
-        post,
-        comments,
-        logged_in: req.session.logged_in
-      })
+      res.status(404).end();
     }
-  } catch (error) {
-    res.status(500).json({ message: `Error: ${error}`})
+  } catch (err) {
+    res.status(500).json(err);
   }
-})
+});
 
 // must test router.get
 
@@ -40,7 +34,7 @@ router.post('/', async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newPost);
+    res.status(200).redirect('/dashboard');
   } catch (err) {
     res.status(400).json(err);
   }

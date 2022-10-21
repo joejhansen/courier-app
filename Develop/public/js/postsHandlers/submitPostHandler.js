@@ -1,9 +1,16 @@
+const userGroupHandler = (event) => {
+    event.preventDefault()
+    document.querySelector('#groupIDValue').textContent = parseInt(event.target.textContent.trim(''))
+}
+
 const submitPostHandler = async (event) => {
     event.preventDefault();
 
     const post_content = document.querySelector('#textArea').value.trim();
     const title = document.querySelector('#title').value.trim()
-    const group_id = document.querySelector('.is-active').value
+    const group_id = parseInt(document.querySelector('#groupIDValue').textContent)
+
+    // console.log(post_content, title, group_id)
 
     if (!post_content || !title || !group_id) {
         alert('Please provide content for both the title and main text!')
@@ -26,4 +33,5 @@ const submitPostHandler = async (event) => {
     }
 }
 
-document.querySelector('#postForm').addEventListener('submit', submitPostHandler)
+document.querySelector('.new-post-form').addEventListener('submit', submitPostHandler)
+document.querySelector('.user-groups').addEventListener('click', userGroupHandler)

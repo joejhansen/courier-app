@@ -6,7 +6,8 @@ router.get('/:id', withAuth, async (req, res) => {
   try {
     const groupPostData = await Post.findAll({
       where: { group_id: req.params.id }, 
-
+    }, {
+      include: [User]
     });
     const groupPosts = groupPostData.map((group) => group.get({ plain: true }));
 
@@ -23,6 +24,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
     const logged_in = req.session.logged_in
     res.render("group", { groupPosts, logged_in, groupMembers })
+    // {{#each groupPost }}
     // res.body
     // res.body.grouPosts
     // res.body.logged_in
