@@ -12,13 +12,19 @@ router.get('/', withAuth, async (req, res) => {
         const posts = postData.map((post) => post.get({ plain: true }));
 
         const groupData = await Group.findAll({
-            where: { group_admin: req.session.user_id }
+            where: { group_admin: req.session.user_id },
+            include: [{
+                model: User
+            }],
         });
+
         const groups = groupData.map((group) => group.get({ plain: true }));
 
         const user = await User.findByPk(req.session.user_id)
         const U = user.get({ plain: true })
-        console.log(posts)
+
+        // console.log(posts)
+
         res.render('dashboard', {
             posts,
             groups,
@@ -38,7 +44,8 @@ router.get('/newpost', withAuth, async (req, res) => {
             const userGroupsData = await UserGroups.findAll({
                 where: {
                     user_id: req.session.user_id
-                }
+                },
+                include: [Group]
             })
 
             const userGroups = await userGroupsData.map((group) => group.get({ plain: true }))

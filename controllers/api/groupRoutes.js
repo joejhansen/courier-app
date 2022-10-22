@@ -1,33 +1,30 @@
 const router = require('express').Router();
 const { Group, Post, User, UserGroups } = require('../../models');
 const withAuth = require('../../utils/auth')
+const isAdmin = require('../../utils/isAdmin')
+const isMember = require('../../utils/isMember')
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', withAuth, isMember, async (req, res) => {
   try {
     const groupPostData = await Post.findAll({
       where: { group_id: req.params.id },
-      include: [User] 
+      include: [User]
     });
-    const groupPosts = groupPostData.map((group) => group.get({ plain: true }));
+    const groupPosts = await groupPostData.map((group) => group.get({ plain: true }));
 
-    const groupData = await Group.findByPk(req.params.id)
+    const groupData = await Group.findOne({
+      where: { id: req.params.id },
+      include: [{ model: UserGroups, include: [User] }, { model: User }]
+    })
 
-    const group = groupData.get({ force: true })
-    
-    const groupMembers = JSON.parse(group.group_members)
+    const group = await groupData.get({ plain: true })
 
-    // console.log(group)
-    // res.body.group.group_members.length
-    // group.group_members[n]
-    // console.log(groupMembers)
-    console.log(groupPosts)
     const logged_in = req.session.logged_in
-    res.render("group", { groupPosts, logged_in, groupMembers })
-    // {{#each groupPost }}
-    // res.body
-    // res.body.grouPosts
-    // res.body.logged_in
-    // res.body.groupMembers
+
+    const adminCheck = isAdmin(group.user.id, req.session.user_id)
+
+    res.status(200).render("group", { groupPosts, logged_in, group, adminCheck })
+
   } catch (error) {
     res.status(500).json(error);
   }
@@ -58,19 +55,19 @@ router.post('/', async (req, res) => {
       group_id: newGroup.id
     })
 
-    userGroup = newUserGroup.get({ plain: true })
+    const userGroup = newUserGroup.get({ plain: true })
 
     console.log(userGroup)
 
-    if (newGroup && newUserGroup){
+    if (newGroup && newUserGroup) {
       res.status(200).redirect('/dashboard')
     } else {
-      res.status(500).json({ message: "Internal server error creating one or more groups"})
+      res.status(500).json({ message: "Internal server error creating one or more groups" })
     }
     // if (!req.body.group_name) {
     //   return res.status(401).json({ msg: "No group!" })
     // }
-    
+
   } catch (err) {
     res.status(400).json(err);
   }
@@ -79,19 +76,39 @@ router.post('/', async (req, res) => {
 // groups/id
 router.put('/:id', async (req, res) => {
   try {
-    const [affectedRows] = await Group.update(req.body.group_members, {
 
+    const newUser = req.body.newUser
+
+    const newMemberData = await User.findOne({
       where: {
-        id: req.params.id,
-      },
-    });
-
-
-    if (affectedRows > 0) {
-      res.status(200).end();
-    } else {
-      res.status(404).end();
+        username: newUser
+      }
+    })
+    
+    if (!newMemberData){
+      return res.status(404).send(`Can't find that user, sorry!`)
     }
+
+    const user_id = newMemberData.id
+    const group_id = req.params.id
+
+    const newMember = await UserGroups.create({
+      user_id: user_id,
+      group_id: group_id,
+    })
+
+    if(!newMember){
+      return res.status(500).send('something bad happened with the server')
+    }
+
+    res.status(200).redirect(`/api/groups/${req.params.id}`)
+    // const [affectedRows] = await Group.update(req.body.group_members, {
+
+    //   where: {
+    //     id: req.params.id,
+    //   },
+    // });
+
 
   } catch (err) {
     res.status(500).json(err);

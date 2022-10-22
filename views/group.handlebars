@@ -27,7 +27,20 @@
 
     {{!-- Group Members --}}
     <div id="groupMembers" class="column is-4 p-3 my-3">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Group Admin</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <tr>
+                <td>{{group.user.username}}</td>
+                </tr>
+            </tbody>
+
+        </table>
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr>
@@ -36,10 +49,10 @@
             </thead>
 
             <tbody>
-                {{#if groupMembers.length}}
-                {{#each groupMembers as |member|}}
+                {{#if group.user_groups.length}}
+                {{#each group.user_groups as |user_group|}}
                 <tr>
-                    <td>{{member}}</td>
+                    <td>{{user_group.user.username}}</td>
                 </tr>
                 {{/each}}
                 {{/if}}
@@ -47,10 +60,11 @@
             </tbody>
 
         </table>
-
+        {{#if adminCheck}}
+        <form id="addMemberForm" action="submit">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" type="text" placeholder="Add a Member">
+                <input id="newMemberField" class="input" type="text" placeholder="Add a Member">
             </div>
             <div class="control">
                 <a class="button is-info">
@@ -58,6 +72,9 @@
                 </a>
             </div>
         </div>
+        </form>
+        <script src="/js/groupsHandlers/addGroupMemberHandler.js"></script>
+        {{/if}}
     </div>
 
 </div>

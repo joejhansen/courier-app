@@ -1,5 +1,5 @@
 const deleteGroupHandler = async (event) => {
-    event.preventDefulat();
+    event.preventDefault();
 
     const id = document.querySelector('#deleteBtn').attributes('data-group-id')
     const group_admin = document.querySelector('#deleteBtn').attributes('data-group-admin')

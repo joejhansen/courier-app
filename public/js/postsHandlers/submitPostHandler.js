@@ -1,6 +1,8 @@
 const userGroupHandler = (event) => {
     event.preventDefault()
-    document.querySelector('#groupIDValue').textContent = parseInt(event.target.textContent.trim(''))
+    console.log(parseInt(event.target.getAttribute('data-group-id')))
+    document.querySelector('#groupIDValue').textContent = parseInt(event.target.getAttribute('data-group-id'))
+    // document.querySelector('#groupIDValue') = parseInt(event.target.textContent.trim(''))
 }
 
 const submitPostHandler = async (event) => {

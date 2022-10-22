@@ -14,6 +14,18 @@ Group.belongsTo(User, {
     through: UserGroups
 });
 
+Group.belongsToMany(User, {
+    foreignKey: 'group_id',
+    through: UserGroups
+})
+
+UserGroups.belongsTo(User);
+
+User.hasMany(UserGroups);
+
+UserGroups.belongsTo(Group);
+
+Group.hasMany(UserGroups)
 // Group.belongsToMany(User, {
 //     // foreignKey: 'group_members'
 //     through: UserGroups
@@ -49,7 +61,8 @@ Group.hasMany(Post, {
 });
 
 Group.hasMany(User, {
-    foreignKey: 'group_id'
+    foreignKey: 'group_id',
+    // through: UserGroups
 });
 
 User.hasMany(Post, {
@@ -60,9 +73,9 @@ User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
 
-User.hasMany(Group, {
-    foreignKey: 'user_id'
-});
+// User.hasMany(Group, {
+//     foreignKey: 'user_id'
+// });
 
 module.exports = {
     Group, 

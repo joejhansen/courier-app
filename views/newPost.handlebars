@@ -148,9 +148,11 @@
         <div class="user-groups">
             {{#if userGroups.length}}
             {{#each userGroups as |userGroup|}}
+            <div>
             <a href="#" data-group-id="{{userGroup.group_id}}">
-                {{userGroup.group_id}}
+                {{userGroup.group.group_name}}
             </a>
+            </div>
             {{/each}}
             {{/if}}
         </div>
