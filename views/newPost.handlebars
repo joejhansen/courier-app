@@ -145,16 +145,24 @@
                     rows="15"></textarea>
             </div>
         </div>
-        <div class="user-groups">
-            {{#if userGroups.length}}
-            {{#each userGroups as |userGroup|}}
-            <div>
-            <a href="#" data-group-id="{{userGroup.group_id}}">
-                {{userGroup.group.group_name}}
-            </a>
+        <div>
+
+        </div>
+        <div class="user-groups" class="control">
+            <div class="select">
+                <select id="groupDropDown" data-group-id="">
+                    <option value="null" selected="selected">Select a Group</option>
+                    {{#if userGroups.length}}
+                    {{#each userGroups as |userGroup|}}
+
+                    <option value="{{userGroup.group_id}}" data-group-id="{{userGroup.group_id}}">
+                        {{userGroup.group.group_name}}
+                    </option>
+
+                    {{/each}}
+                    {{/if}}
+                </select>
             </div>
-            {{/each}}
-            {{/if}}
         </div>
         <div id="groupIDValue" class="is-hidden">
 
@@ -172,9 +180,9 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                     {{#if userGroups.length}}
-                    {{#each userGroups as |group|}}
-                    <a href="#" data-group-id="{{group.group_id}}" class="dropdown-item">
-                        {{group.group_id}}
+                    {{#each userGroups as |userGroup|}}
+                    <a href="#" data-group-id="{{userGroup.group_id}}" class="dropdown-item">
+                        {{userGroup.group.group_name}}
                     </a>
                     {{/each}}
                     {{/if}}

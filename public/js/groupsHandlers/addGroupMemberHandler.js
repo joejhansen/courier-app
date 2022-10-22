@@ -2,16 +2,16 @@ const addGroupMemberHandler = async (event) => {
     event.preventDefault();
 
     const group_id = window.location.pathname.trim('').split('/')[3]
-    const newUser = document.querySelector('#newMemberField').value.trim('')
+    const username = document.querySelector('#newMemberField').value.trim('')
 
-    if (!group_id || !newUser){
+    if (!group_id || !username){
         return alert('please provide a valid username')
     }
 
     try{
-        const response = fetch(`/api/groups/${group_id}`, {
+        const response = await fetch(`/api/groups/${group_id}`, {
             method: 'PUT',
-            body: JSON.stringify({ newUser, }),
+            body: JSON.stringify({ username, }),
             headers: { 'Content-Type': 'application/json' },
         })
 

@@ -77,25 +77,26 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
 
-    const newUser = req.body.newUser
+    const username = req.body.username
 
     const newMemberData = await User.findOne({
       where: {
-        username: newUser
+        username: username
       }
     })
-
     const newMemberDataPlain = newMemberData.get({ plain: true })
-
-    const newMember = await UserGroups.create({
+    
+    const newUserGroupData = await UserGroups.create({
       user_id: newMemberDataPlain.id,
       group_id: req.params.id
     })
 
-    const newMemberPlain = newMember.get({ plain: true })
+    const newUserGroup = newUserGroupData.get({ plain: true })
 
-    if (newMemberPlain) {
-      res.status(200).json(newMemberPlain)
+    console.log(`\n${newUserGroup}\n`)
+
+    if(newUserGroup){
+      res.status(200).json(newUserGroup)
     } else {
       res.status(500)
     }

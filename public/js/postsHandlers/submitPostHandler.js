@@ -1,8 +1,17 @@
-const userGroupHandler = (event) => {
-    event.preventDefault()
-    console.log(parseInt(event.target.getAttribute('data-group-id')))
-    document.querySelector('#groupIDValue').textContent = parseInt(event.target.getAttribute('data-group-id'))
-    // document.querySelector('#groupIDValue') = parseInt(event.target.textContent.trim(''))
+const changeOptionHandler = (event) => {
+    var e = document.getElementById("groupDropDown");
+
+    const onChange = () => {
+        const value = e.value;
+        var text = e.options[e.selectedIndex].text;
+        return { value, text }
+    }
+
+    e.addEventListener('change', onChange)
+    // e.onchange = onChange;
+    const currentValues = onChange();
+    e.setAttribute('data-group-id', currentValues.value)
+    return
 }
 
 const submitPostHandler = async (event) => {
@@ -10,7 +19,11 @@ const submitPostHandler = async (event) => {
 
     const post_content = document.querySelector('#textArea').value.trim();
     const title = document.querySelector('#title').value.trim()
-    const group_id = parseInt(document.querySelector('#groupIDValue').textContent)
+    const group_id = document.querySelector('#groupDropDown').getAttribute('data-group-id')
+
+    // const group_id = 
+
+    // return console.log(post_content, title, group_id)
 
     // console.log(post_content, title, group_id)
 
@@ -36,4 +49,5 @@ const submitPostHandler = async (event) => {
 }
 
 document.querySelector('.new-post-form').addEventListener('submit', submitPostHandler)
-document.querySelector('.user-groups').addEventListener('click', userGroupHandler)
+// document.querySelector('#groupDropDown').addEventListener('change', changeOptionHandler)
+document.getElementById('groupDropDown').addEventListener('change', changeOptionHandler)
