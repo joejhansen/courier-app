@@ -11,14 +11,24 @@ router.get('/', withAuth, async (req, res) => {
         });
         const posts = postData.map((post) => post.get({ plain: true }));
 
-        const groupData = await Group.findAll({
-            where: { group_admin: req.session.user_id },
-            include: [{
-                model: User
-            }],
-        });
+        const userGroupsData = await UserGroups.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            include: {
+                model: Group
+            }
+        })
 
-        const groups = groupData.map((group) => group.get({ plain: true }));
+        const userGroups = userGroupsData.map((userGroup) => userGroup.get({ plain: true }))
+        // const groupData = await Group.findAll({
+        //     where: { group_admin: req.session.user_id },
+        //     include: [{
+        //         model: User
+        //     }],
+        // });
+
+        // const groups = groupData.map((group) => group.get({ plain: true }));
 
         const user = await User.findByPk(req.session.user_id)
         const U = user.get({ plain: true })
@@ -27,7 +37,7 @@ router.get('/', withAuth, async (req, res) => {
 
         res.render('dashboard', {
             posts,
-            groups,
+            userGroups,
             U,
             logged_in: req.session.logged_in,
         });

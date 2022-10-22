@@ -84,35 +84,26 @@ router.put('/:id', async (req, res) => {
         username: newUser
       }
     })
-    
-    if (!newMemberData){
-      return res.status(404).send(`Can't find that user, sorry!`)
-    }
 
-    const user_id = newMemberData.id
-    const group_id = req.params.id
+    const newMemberDataPlain = newMemberData.get({ plain: true })
 
     const newMember = await UserGroups.create({
-      user_id: user_id,
-      group_id: group_id,
+      user_id: newMemberDataPlain.id,
+      group_id: req.params.id
     })
 
-    if(!newMember){
-      return res.status(500).send('something bad happened with the server')
+    const newMemberPlain = newMember.get({ plain: true })
+
+    if (newMemberPlain) {
+      res.status(200).json(newMemberPlain)
+    } else {
+      res.status(500)
     }
 
-    res.status(200).redirect(`/api/groups/${req.params.id}`)
-    // const [affectedRows] = await Group.update(req.body.group_members, {
-
-    //   where: {
-    //     id: req.params.id,
-    //   },
-    // });
-
-
   } catch (err) {
-    res.status(500).json(err);
+    res.status(502).json(err);
   }
+  // TODO: FIX THIS SHIT OH MY GOD WHAT THE FUCK WHY ISN'T IT WORKING CORRECTLY AAAAAAAAAAAAAAAAAA
 });
 
 router.delete('/:id', async (req, res) => {

@@ -47,14 +47,14 @@
             <div>
                 <p class="title ">Your Groups</p>
 
-                {{#if groups.length}}
-                {{#each groups as |group|}}
+                {{#if userGroups.length}}
+                {{#each userGroups as |userGroup|}}
 
                 <p class="buttons is-flex is-justify-content-center">
-                    <a href="/api/groups/{{id}}">
+                    <a href="/api/groups/{{group_id}}">
                         <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
                                 <i class="fa-solid fa-users"></i></span>
-                            <span>{{group_name}}</span>
+                            <span>{{group.group_name}}</span>
                         </button></a>
                 </p>
 
