@@ -1,32 +1,27 @@
 const deleteGroupHandler = async (event) => {
     event.preventDefault();
 
-    const id = document.querySelector('#deleteBtn').attributes('data-group-id')
-    const group_admin = document.querySelector('#deleteBtn').attributes('data-group-admin')
-    // const id = document.querySelector('#deleteBtn').attributes('id')
-    // is this right?
+    const group_id = window.location.pathname.trim('').split('/')[3]
 
-    if (!id || !group_admin) {
-        alert("Failed to delete group.")
-    } else {
+    // return console.log(group_id)
 
-        try {
-            const response = await fetch('/groups', {
-                method: 'DELETE',
-                body: JSON.stringify({ id, group_admin }),
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if (response.ok) {
-                document.location.replace('/')
-            } else {
-                alert('Failed to delete group. Please try again later.');
-            }
-
-        } catch (err) {
-            alert(`Something went wrong: ${error}`)
+    try {
+        const response = await fetch(`/api/groups/${group_id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({ group_id }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response)
+        if (response.ok) {
+            document.location.replace('/')
+        } else {
+            alert('Failed to delete group. Please try again later.');
         }
+
+    } catch (err) {
+        alert(`Something went wrong: ${error}`)
     }
+
 }
 
-document.querySelector('#deleteBtn').addEventListener('click', deleteGroupHandler)
+document.querySelector('#deleteGroupForm').addEventListener('submit', deleteGroupHandler)

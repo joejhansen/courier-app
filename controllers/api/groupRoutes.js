@@ -108,20 +108,35 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
+
+  const groupData = await Group.findByPk(req.params.id, {
+    include: [User]
+  })
+
+  const group = groupData.get({ plain: true })
+  // console.log(group)
+
+  // console.log(group.user.id)
+
+  if(group.user.id !== req.session.user_id){
+    return res.status(503)
+  }
+  
   try {
-    const [affectedRows] = Group.destroy({
+    const affectedRows = await Group.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    if (affectedRows) {
+      return res.status(200).end();
     } else {
-      res.status(404).end();
+      return res.status(404).end();
     }
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err)
+    return res.status(500).json(err);
   }
 });
 

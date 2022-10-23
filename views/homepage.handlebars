@@ -1,10 +1,10 @@
-{{#if groups.length}}
-{{#each groups as |group|}}
+{{#if userGroups.length}}
+{{#each userGroups as |group|}}
 
 <div id="mainPage-flex">
     <div class="card m-4 p-3 has-text-centered" id="mainPage-box">
-        <a href="api/groups/{{id}}"><p class="has-text-weight-semibold is-size-4 pb-2">{{group_name}}</p>
-        <p>Admin: {{user.username}} | {{posts.length}} posts | Created on {{format_date createdAt}}</p></a>
+        <a href="api/groups/{{group.group_id}}"><p class="has-text-weight-semibold is-size-4 pb-2">{{group.group.group_name}}</p>
+        <p>Admin: {{group.group.user.username}} | Created on {{format_date group.group.createdAt}}</p></a>
     </div>
 </div>
 {{/each}}

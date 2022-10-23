@@ -15,6 +15,7 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Group</th>
+                                <th>Created on</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td><a href="/api/posts/{{post.id}}">{{post.title}}</a></td>
                                 <td><a href="/api/groups/{{post.group.id}}">{{post.group.group_name}}</a></td>
+                                <td>{{format_date post.createdAt}}</td>
                             </tr>
                             {{/each}}
                             {{else}}
@@ -51,7 +53,7 @@
                 {{#each userGroups as |userGroup|}}
 
                 <p class="buttons is-flex is-justify-content-center">
-                    <a href="/api/groups/{{group_id}}">
+                    <a href="/api/groups/{{userGroup.group_id}}">
                         <button class="button is-link is-rounded is-medium" id="grpButton"><span class="icon">
                                 <i class="fa-solid fa-users"></i></span>
                             <span>{{group.group_name}}</span>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Group, } = require('../models');
+const { Post, User, Group, UserGroups } = require('../models');
 const withAuth = require('../utils/auth');
 
 //Get all 
@@ -15,13 +15,31 @@ router.get('/', async (req, res) => {
     // });
 
     // const posts = postData.map((post) => post.get({ plain: true }));
-    const groupData = await Group.findAll({
-      include: [User, Post],
-    });
-    const groups = groupData.map((group) => group.get({ plain: true }));
+    if(!req.session.user_id){
+      return res.redirect('/login')
+    }
+
+    const userGroupsData = await UserGroups.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [User],
+      include: [{
+        model: Group,
+        include: [User]
+      }]
+    })
+
+    const userGroups = userGroupsData.map((userGroups) => userGroups.get({ plain: true }))
+
+    // return res.status(200).json(userGroups)
+    // const groupData = await Group.findAll({
+    //   include: [User, Post],
+    // });
+    // const groups = groupData.map((group) => group.get({ plain: true }));
 
     res.render('homepage', {
-      groups,
+      userGroups,
       logged_in: req.session.logged_in
     });
   } catch (err) {

@@ -1,3 +1,13 @@
+<section class="hero is-info">
+  <div class="hero-body">
+    <p class="title">
+      {{group.group_name}}
+    </p>
+    <p class="subtitle">
+      Created by: {{group.user.username}}
+    </p>
+  </div>
+</section>
 <div class="columns m-5">
 
     {{!-- Group Posts --}}
@@ -30,20 +40,6 @@
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th>Group Admin</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>{{group.user.username}}</td>
-                </tr>
-            </tbody>
-
-        </table>
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-                <tr>
                     <th>Group Members</th>
                 </tr>
             </thead>
@@ -73,7 +69,16 @@
                 </div>
             </div>
         </form>
+        <div>Or</div>
+        <form id="deleteGroupForm" action="submit">
+            <button type="submit" class="button is-danger">DELETE GROUP</button>
+        </form>
         <script src="/js/groupsHandlers/addGroupMemberHandler.js"></script>
+        <script src="/js/groupsHandlers/deleteGroupHandler.js"></script>
+        {{else}}
+        <form id="leaveGroupForm" action="submit">
+            <button type="submit" class="button is-danger">LEAVE GROUP</button>
+        </form>
         {{/if}}
     </div>
 

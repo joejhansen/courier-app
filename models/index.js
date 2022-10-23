@@ -19,11 +19,15 @@ Group.belongsToMany(User, {
     through: UserGroups
 })
 
-UserGroups.belongsTo(User);
+UserGroups.belongsTo(User, {
+    onDelete: 'cascade'
+});
 
 User.hasMany(UserGroups);
 
-UserGroups.belongsTo(Group);
+UserGroups.belongsTo(Group, {
+    onDelete: 'cascade'
+});
 
 Group.hasMany(UserGroups)
 // Group.belongsToMany(User, {
@@ -33,23 +37,32 @@ Group.hasMany(UserGroups)
 // })
 
 Post.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
 });
 
 Post.belongsTo(Group, {
-    foreignKey: 'group_id'
+    foreignKey: 'group_id',
+    onDelete: 'cascade'
 });
 
 Comment.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
 });
+
+Comment.belongsTo(Group, {
+    foreignKey: 'group_id',
+    onDelete: 'cascade'
+})
 
 // Comment.belongsTo(Group, {
 //     foreignKey: 'group_id'
 // });
 
 Comment.belongsTo(Post, {
-    foreignKey: 'post_id'
+    foreignKey: 'post_id',
+    onDelete: 'cascade'
 });
 
 Post.hasMany(Comment, {
@@ -57,20 +70,21 @@ Post.hasMany(Comment, {
 });
 
 Group.hasMany(Post, {
-    foreignKey: 'group_id'
+    foreignKey: 'group_id',
+    
 });
 
-Group.hasMany(User, {
-    foreignKey: 'group_id',
-    // through: UserGroups
-});
+// Group.hasMany(User, {
+//     foreignKey: 'group_id',
+//     // through: UserGroups
+// });
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
 });
 
 User.hasMany(Comment, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
 });
 
 // User.hasMany(Group, {
