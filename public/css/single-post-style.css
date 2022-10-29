@@ -1,0 +1,31 @@
+/* THIS MAKES THE DIVS AROUND THE TEXT BOXES EXPAND WITH THE TEXT BOX */
+#toolbar,
+#newPostTextArea,
+#newPostTextInput {
+    height: max-content;
+}
+
+/* THIS PUTS PLACEHOLDER TEXT IN THE CONTENTEDITABLE DIV CUZ IT CAN'T BE A TEXTAREA LOL */
+/* THANK YOU STACK OVERFLOW */
+#textarea {
+    border: solid 1px gray;
+    width: 300px;
+    height: 100px;
+    padding: 6px;
+    overflow: scroll;
+}
+
+[contenteditable][placeholder]:empty:after {
+    content: attr(placeholder);
+    position: absolute;
+    color: gray;
+    background-color: transparent;
+}
+
+/* .navbar{
+    display: flex;
+  } */
+
+/* .navbar-end{
+    justify-content: flex-end;
+  } */

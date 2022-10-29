@@ -16,8 +16,8 @@ const changeOptionHandler = (event) => {
 
 const submitPostHandler = async (event) => {
     event.preventDefault();
-
-    const post_content = document.querySelector('#textArea').value.trim();
+    // return console.log(document.querySelector("#textArea").innerHTML)
+    const post_content = document.querySelector("#textArea").innerHTML;
     const title = document.querySelector('#title').value.trim()
     const group_id = document.querySelector('#groupDropDown').getAttribute('data-group-id')
 

@@ -68,3 +68,23 @@ flex-direction: column;
   background-color: rgba(255, 255, 255, 0.606);
   border-radius: 5px;
 }
+
+.editor-images{
+  height: 25px;
+  width: 25px;
+}
+
+#toolbar{
+  background-color: rgb(225, 225, 225);
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#newPostTextArea{
+  background-color: rgb(225, 225, 225);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-bottom: 1.5rem;
+}
+
