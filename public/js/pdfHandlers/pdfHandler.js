@@ -1,6 +1,6 @@
 // requires and variables for use
-const fs = require('fs');
-const pdf = require('pdf-parse');
+// const fs = require('fs');
+// const pdf = require('pdf-parse');
 
 const fileInput = document.getElementById('input');
 const textArea = document.getElementById('textArea');

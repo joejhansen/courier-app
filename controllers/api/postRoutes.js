@@ -50,6 +50,14 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/pdfHandler', async(req, res) => {
+  try{
+
+  } catch(err){
+    throw err
+  }
+})
+
 router.delete('/:id', async (req, res) => {
   try {
     const postData = await Post.destroy({

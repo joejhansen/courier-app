@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
     // const posts = postData.map((post) => post.get({ plain: true }));
     if(!req.session.user_id){
-      return res.redirect('/login')
+      return res.redirect('/info')
     }
 
     const userGroupsData = await UserGroups.findAll({
@@ -49,7 +49,9 @@ router.get('/', async (req, res) => {
 });
 
 
-
+router.get('/info', (req, res) => {
+  res.render('info')
+})
 
 
 router.get('/login', (req, res) => {
